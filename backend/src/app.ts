@@ -22,7 +22,7 @@ async function main() {
   server.applyMiddleware({ app });
 
   await new Promise<void>((resolve) => {
-    httpServer.listen({ port: 4000 }, resolve);
+    httpServer.listen({ port: process.env.PORT || 4000 }, resolve);
   });
 
   console.log('------------------------------------------');
