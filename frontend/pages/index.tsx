@@ -26,7 +26,7 @@ const Home: NextPage<HomeProperties> = ({ users }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {users.length > 0 ? (
-        users.map((user) => <pre>{JSON.stringify(user, null, 2)}</pre>)
+        users.map((user) => <pre>{JSON.stringify(user, undefined, 2)}</pre>)
       ) : (
         <p>No Users</p>
       )}
