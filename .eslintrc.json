@@ -13,8 +13,13 @@
     "plugin:prettier/recommended"
   ],
   "plugins": [
-    "sort-exports",
     "unicorn"
+  ],
+  "ignorePatterns": [
+    "frontend/node_modules/**/*",
+    "frontend/prisma/generated/**/*",
+    "backend/node_modules/**/*",
+    "backend/prisma/generated/**/*"
   ],
   "rules": {
     "class-methods-use-this": "off",

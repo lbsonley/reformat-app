@@ -1,4 +1,10 @@
-import { Archetypes, Languages, LifeJourney, LifeJourneys, TalentEnergies, TalentEnergy, TalentLevel, TalentLevels } from '@prisma/client';
+import {
+  Archetypes,
+  Languages,
+  LifeJourneys,
+  TalentEnergies,
+  TalentLevels,
+} from '@prisma/client';
 import { Field, ID, ObjectType } from 'type-graphql';
 
 @ObjectType({ description: 'the user' })
@@ -13,31 +19,31 @@ class User {
   firstName: string;
 
   @Field()
-  lastName: String
+  lastName: string;
 
   @Field()
-  language: Languages
+  language: Languages;
 
   @Field({ nullable: true })
-  animal?: String
+  animal?: string;
 
   @Field({ nullable: true })
-  archetypeId?: Archetypes
+  archetypeId?: Archetypes;
 
   @Field({ nullable: true })
-  lifeJourneyId?: LifeJourneys
+  lifeJourneyId?: LifeJourneys;
 
   @Field({ nullable: true })
-  talent?: String
+  talent?: string;
 
   @Field({ nullable: true })
-  talentLevelId?: TalentLevels
+  talentLevelId?: TalentLevels;
 
   @Field({ nullable: true })
-  talentEnergyId?: TalentEnergies
+  talentEnergyId?: TalentEnergies;
 
   @Field({ nullable: true })
-  heroJourneyProgress?: Archetypes
+  heroJourneyProgress?: Archetypes;
 }
 
 export default User;
