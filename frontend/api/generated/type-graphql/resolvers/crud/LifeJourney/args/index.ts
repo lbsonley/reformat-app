@@ -1,0 +1,12 @@
+export { AggregateLifeJourneyArgs } from "./AggregateLifeJourneyArgs";
+export { CreateLifeJourneyArgs } from "./CreateLifeJourneyArgs";
+export { CreateManyLifeJourneyArgs } from "./CreateManyLifeJourneyArgs";
+export { DeleteLifeJourneyArgs } from "./DeleteLifeJourneyArgs";
+export { DeleteManyLifeJourneyArgs } from "./DeleteManyLifeJourneyArgs";
+export { FindFirstLifeJourneyArgs } from "./FindFirstLifeJourneyArgs";
+export { FindManyLifeJourneyArgs } from "./FindManyLifeJourneyArgs";
+export { FindUniqueLifeJourneyArgs } from "./FindUniqueLifeJourneyArgs";
+export { GroupByLifeJourneyArgs } from "./GroupByLifeJourneyArgs";
+export { UpdateLifeJourneyArgs } from "./UpdateLifeJourneyArgs";
+export { UpdateManyLifeJourneyArgs } from "./UpdateManyLifeJourneyArgs";
+export { UpsertLifeJourneyArgs } from "./UpsertLifeJourneyArgs";
