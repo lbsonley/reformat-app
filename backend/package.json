@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build": "prisma generate",
+    "prisma:deploy": "prisma migrate deploy",
     "start": "ts-node src/index.ts"
   },
   "keywords": [],
