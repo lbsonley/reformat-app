@@ -32,7 +32,17 @@
       }
     ],
     "no-shadow": "off",
-    "unicorn/prefer-node-protocol": "off"
+    "unicorn/prefer-node-protocol": "off",
+    "unicorn/prevent-abbreviations": [
+      "error",
+      {
+        "allowList": {
+          "props": true,
+          "getInitialProps": true,
+          "getServerSideProps": true
+        }
+      }
+    ]
   },
   "settings": {
     "import/parsers": {
