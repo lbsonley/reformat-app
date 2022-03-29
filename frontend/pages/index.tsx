@@ -6,14 +6,6 @@ import client from '../apollo-client';
 import { User } from '../prisma/generated/models';
 import styles from '../styles/Home.module.css';
 
-// interface User {
-//   id: string;
-//   firstName: string;
-//   lastName: string;
-//   email: string;
-//   animal: string;
-// }
-
 interface HomeProperties {
   users: User[];
 }
