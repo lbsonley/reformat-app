@@ -3,8 +3,15 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { gql } from '@apollo/client';
 import client from '../apollo-client';
-import { User } from '../prisma/generated/type-graphql/models';
 import styles from '../styles/Home.module.css';
+
+interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  animal: string;
+}
 
 interface HomeProperties {
   users: User[];
