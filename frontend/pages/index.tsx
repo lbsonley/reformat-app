@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { gql } from '@apollo/client';
 import client from '../apollo-client';
-import { User } from '../prisma/generated/models';
+import { User } from '../types/schema';
 import styles from '../styles/Home.module.css';
 
 interface HomeProperties {

@@ -14,11 +14,6 @@ generator typegraphql {
   output   = "./generated/type-graphql"
 }
 
-generator frontend {
-  provider = "typegraphql-prisma"
-  output   = "../../frontend/prisma/generated"
-}
-
 model User {
   // personal information
   id String @id @default(uuid())
