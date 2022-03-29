@@ -13,7 +13,7 @@ COPY ./src /app/src
 COPY ./prisma /app/prisma
 COPY ./nodemon.json /app/nodemon.json
 COPY ./package.json /app/package.json
-COPY ./../yarn.lock /app/yarn.lock
+COPY ./yarn.lock /app/yarn.lock
 COPY ./tsconfig.json /app/tsconfig.json
 
 #################################
