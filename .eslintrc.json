@@ -37,6 +37,7 @@
         "devDependencies": ["**/*.test.ts", "**/prisma/test/*.ts"]
       }
     ],
+    "no-use-before-define": "off",
     "no-shadow": "off",
     "unicorn/prefer-node-protocol": "off",
     "unicorn/prevent-abbreviations": [
