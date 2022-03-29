@@ -2,8 +2,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { gql } from '@apollo/client';
-import { User } from 'backend/prisma/generated/type-graphql/models';
 import client from '../apollo-client';
+import { User } from '../prisma/generated/models';
 import styles from '../styles/Home.module.css';
 
 // interface User {

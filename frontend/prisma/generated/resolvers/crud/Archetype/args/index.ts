@@ -1,0 +1,12 @@
+export { AggregateArchetypeArgs } from "./AggregateArchetypeArgs";
+export { CreateArchetypeArgs } from "./CreateArchetypeArgs";
+export { CreateManyArchetypeArgs } from "./CreateManyArchetypeArgs";
+export { DeleteArchetypeArgs } from "./DeleteArchetypeArgs";
+export { DeleteManyArchetypeArgs } from "./DeleteManyArchetypeArgs";
+export { FindFirstArchetypeArgs } from "./FindFirstArchetypeArgs";
+export { FindManyArchetypeArgs } from "./FindManyArchetypeArgs";
+export { FindUniqueArchetypeArgs } from "./FindUniqueArchetypeArgs";
+export { GroupByArchetypeArgs } from "./GroupByArchetypeArgs";
+export { UpdateArchetypeArgs } from "./UpdateArchetypeArgs";
+export { UpdateManyArchetypeArgs } from "./UpdateManyArchetypeArgs";
+export { UpsertArchetypeArgs } from "./UpsertArchetypeArgs";
