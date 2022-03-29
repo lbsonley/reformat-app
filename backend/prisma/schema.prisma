@@ -6,6 +6,7 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl"]
 }
 
 generator typegraphql {
@@ -14,19 +15,29 @@ generator typegraphql {
 }
 
 model User {
+  // personal information
   id String @id @default(uuid())
   email String @unique
   firstName String
   lastName String
   language Languages
+
+  // landkarte information
   animal String?
-  talent String?
-  talentEnergy TalentEnergies?
-  heroJourneyProgress Archetypes?
-  archetype Archetype? @relation(fields: [archetypeId], references: [id])
   archetypeId Archetypes?
-  lifeJourney LifeJourney? @relation(fields: [lifeJourneyId], references: [id])
+  archetype Archetype? @relation(fields: [archetypeId], references: [id])
   lifeJourneyId LifeJourneys?
+  lifeJourney LifeJourney? @relation(fields: [lifeJourneyId], references: [id])
+
+  // talent information
+  talent String?
+  talentLevelId TalentLevels?
+  talentLevel TalentLevel? @relation(fields: [talentLevelId], references: [id])
+  talentEnergyId TalentEnergies?
+  talentEnergy TalentEnergy? @relation(fields: [talentEnergyId], references: [id])
+
+  // progress information
+  heroJourneyProgress Archetypes?
 }
 
 model Archetype {
@@ -37,6 +48,18 @@ model Archetype {
 
 model LifeJourney {
   id LifeJourneys @id
+  name String
+  users User[]
+}
+
+model TalentLevel {
+  id TalentLevels @id
+  name String
+  users User[]
+}
+
+model TalentEnergy {
+  id TalentEnergies @id
   name String
   users User[]
 }
@@ -52,6 +75,12 @@ enum LifeJourneys {
   learn
   stand
   resolve
+}
+
+enum TalentLevels {
+  ego
+  emotion
+  tao
 }
 
 enum TalentEnergies {

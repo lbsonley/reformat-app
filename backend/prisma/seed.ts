@@ -16,7 +16,7 @@ const userData: Prisma.UserCreateInput[] = [
     lastName: 'Sonley',
     email: 'patrizia.sonley@gmail.com',
     animal: 'Puma',
-    talent: 'Bringe es auf den punkt um entwicklung zu starten',
+    talent: 'Bringe es auf den punkt um entwicklung anzustossen',
     language: 'de',
   },
 ];
