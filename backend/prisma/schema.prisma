@@ -16,7 +16,7 @@ generator typegraphql {
 
 generator frontend {
   provider = "typegraphql-prisma"
-  output   = "../../frontend/api/generated/type-graphql"
+  output   = "../../frontend/prisma/generated/type-graphql"
 }
 
 model User {
