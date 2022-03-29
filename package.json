@@ -2,6 +2,6 @@
   "private": true,
   "workspaces": ["backend", "frontend"],
   "scripts": {
-    "build": "yarn workspaces foreach run build"
+    "build": "yarn workspace backend run build && yarn workspace frontend run build"
   }
 }
