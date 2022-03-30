@@ -20,9 +20,10 @@ const UserList: NextPage<UserListProperties> = ({ users }) => {
       </Head>
       <h1>Users</h1>
       {users.length > 0 ? (
-        users.map(({ firstName, lastName, email, animal }) => (
+        users.map(({ id, firstName, lastName, email, animal }) => (
           <UserCard
             key={email}
+            id={id}
             name={`${firstName} ${lastName}`}
             email={email}
             animal={animal}

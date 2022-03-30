@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
         </Link>
       </Brand>
       <Links>
-        <Link href="/user-list" passHref>
+        <Link href="/users" passHref>
           <StyledLink>Users</StyledLink>
         </Link>
       </Links>
