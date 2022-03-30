@@ -38,6 +38,7 @@
       }
     ],
     "no-use-before-define": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "no-shadow": "off",
     "unicorn/prefer-node-protocol": "off",
     "unicorn/prevent-abbreviations": [
