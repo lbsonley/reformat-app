@@ -24,7 +24,18 @@ class UserResolver {
   }
 
   @Mutation(() => User)
-  createUser(@Arg('data') data: UserCreateInput, @Ctx() context: Context) {
+  async createUser(
+    @Arg('data') data: UserCreateInput,
+    @Ctx() context: Context
+  ) {
+    const existingUser = await context.prisma.user.findUnique({
+      where: { email: data.email },
+    });
+
+    if (existingUser) {
+      throw new Error(`User with email: ${data.email} already exists`);
+    }
+
     return context.prisma.user.create({
       data,
     });
