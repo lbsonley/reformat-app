@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
+import StyledButton from '../primitives/button/button';
 
 const AppBar = styled.div`
   display: flex;
@@ -31,7 +33,13 @@ const StyledLink = styled.a`
   padding: 0 16px;
 `;
 
+const ReStyledButton = styled(StyledButton)`
+  font-size: 16px;
+  padding: 12px;
+`;
+
 const Navbar: React.FC = () => {
+  const router = useRouter();
   return (
     <AppBar>
       <Brand>
@@ -43,6 +51,11 @@ const Navbar: React.FC = () => {
         <Link href="/users" passHref>
           <StyledLink>Users</StyledLink>
         </Link>
+      </Links>
+      <Links>
+        <ReStyledButton onClick={() => router.push('/users/create')}>
+          Create User
+        </ReStyledButton>
       </Links>
     </AppBar>
   );
