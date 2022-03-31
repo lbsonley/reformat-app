@@ -3,7 +3,7 @@ import { useQuery, gql } from '@apollo/client';
 import Link from 'next/link';
 
 const GET_USER = gql`
-  query Query($userId: String!) {
+  query GetUser($userId: String!) {
     userById(id: $userId) {
       email
       firstName
@@ -17,9 +17,6 @@ const UserDetail: React.FC<UserDetailProperties> = ({ userId }) => {
   const { data, loading, error } = useQuery(GET_USER, {
     variables: { userId },
   });
-
-  console.log({ userId });
-  console.log({ data, loading, error });
 
   if (loading) {
     return (
