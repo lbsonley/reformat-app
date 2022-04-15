@@ -18,6 +18,7 @@ const CREATE_USER = gql`
       firstName
       lastName
       language
+      activeStudent
       profile {
         animal
         archetypeId
@@ -39,6 +40,7 @@ const CreateUser = () => {
       lastName,
       email,
       language,
+      activeStudent,
       currentModule,
       animal,
       talent,
@@ -54,24 +56,43 @@ const CreateUser = () => {
           lastName,
           email,
           language,
+          activeStudent,
           profile: {
             create: {
               currentModule,
               animal,
               talent,
               archetype: {
-                connect: {
-                  id: archetype,
+                connectOrCreate: {
+                  where: {
+                    id: archetype,
+                  },
+                  create: {
+                    id: archetype,
+                    name: archetype.toUpperCase(),
+                  },
                 },
               },
               lifeJourney: {
-                connect: {
-                  id: lifeJourney,
+                createOrConnect: {
+                  where: {
+                    id: lifeJourney,
+                  },
+                  create: {
+                    id: lifeJourney,
+                    name: lifeJourney.toUpperCase(),
+                  },
                 },
               },
               talentEnergy: {
-                connect: {
-                  id: talentEnergy,
+                createOrConnect: {
+                  where: {
+                    id: talentEnergy,
+                  },
+                  create: {
+                    id: talentEnergy,
+                    name: talentEnergy.toUpperCase(),
+                  },
                 },
               },
             },
@@ -145,11 +166,21 @@ const CreateUser = () => {
                 <Col xs={12}>
                   <h2>Basic Information</h2>
                 </Col>
+                <Col xs={12}>
+                  <Field name="activeStudent">
+                    {({ input }) => (
+                      <>
+                        <input type="checkbox" {...input} />
+                        <label htmlFor="active-student">Active Student</label>
+                      </>
+                    )}
+                  </Field>
+                </Col>
                 <Col xs={12} md={4}>
                   <Field name="currentModule">
                     {({ input }) => (
                       <>
-                        <label htmlFor="currentModule">Current Module</label>
+                        <label htmlFor="current-module">Current Module</label>
                         <select id="current-module" {...input}>
                           <option value=""></option>
                           {Object.keys(Modules).map((module) => (

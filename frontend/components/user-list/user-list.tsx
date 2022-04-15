@@ -6,7 +6,7 @@ import UserCard from '../user-card/user-card';
 
 const GET_USERS = gql`
   query AllUsers {
-    allUsers {
+    users {
       id
       firstName
       lastName
@@ -25,12 +25,12 @@ const UserList = () => {
     return null;
   }
 
-  const { allUsers }: { allUsers: User[] } = data;
+  const { users }: { users: User[] } = data;
 
   return (
     <ClientOnly>
-      {allUsers.length > 0 ? (
-        allUsers.map(({ id, firstName, lastName, activeStudent }) => (
+      {users.length > 0 ? (
+        users.map(({ id, firstName, lastName, activeStudent }) => (
           <UserCard
             key={id}
             id={id}

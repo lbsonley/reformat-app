@@ -4,13 +4,17 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const GET_USER = gql`
-  query GetUser($userId: String!) {
-    userById(id: $userId) {
+  query GetUser($where: UserWhereUniqueInput!) {
+    user(where: $where) {
       email
       firstName
       lastName
       profile {
+        currentModule
         animal
+        talent
+        talentEnergyId
+        talentLevelId
         archetypeId
       }
     }
@@ -19,7 +23,7 @@ const GET_USER = gql`
 
 const UserDetail: React.FC<UserDetailProperties> = ({ userId }) => {
   const { data, loading, error } = useQuery(GET_USER, {
-    variables: { userId },
+    variables: { where: { id: userId } },
   });
 
   if (loading) {
@@ -55,7 +59,7 @@ const UserDetail: React.FC<UserDetailProperties> = ({ userId }) => {
     return null;
   }
 
-  const { archetypeId } = data.userById.profile;
+  const { archetypeId } = data.user.profile;
 
   return (
     <>

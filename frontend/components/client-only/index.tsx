@@ -6,7 +6,6 @@ const ClientOnly: React.FC = ({ children, ...delegated }) => {
   useEffect(() => {
     setHasMounted(true);
   }, []);
-  console.log({ hasMounted });
 
   if (!hasMounted) {
     return null;
