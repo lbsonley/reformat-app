@@ -74,7 +74,7 @@ const CreateUser = () => {
                 },
               },
               lifeJourney: {
-                createOrConnect: {
+                connectOrCreate: {
                   where: {
                     id: lifeJourney,
                   },
@@ -85,7 +85,7 @@ const CreateUser = () => {
                 },
               },
               talentEnergy: {
-                createOrConnect: {
+                connectOrCreate: {
                   where: {
                     id: talentEnergy,
                   },
