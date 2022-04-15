@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
+import { Container, Row, Col } from 'react-grid-system';
 import { User } from '../../types/schema';
 import ClientOnly from '../client-only';
 import UserCard from '../user-card/user-card';
@@ -11,6 +12,9 @@ const GET_USERS = gql`
       firstName
       lastName
       activeStudent
+      profile {
+        archetypeId
+      }
     }
   }
 `;
@@ -29,18 +33,25 @@ const UserList = () => {
 
   return (
     <ClientOnly>
-      {users.length > 0 ? (
-        users.map(({ id, firstName, lastName, activeStudent }) => (
-          <UserCard
-            key={id}
-            id={id}
-            name={`${firstName} ${lastName}`}
-            activeStudent={activeStudent}
-          />
-        ))
-      ) : (
-        <p>No Users</p>
-      )}
+      <Container>
+        <Row>
+          {users.length > 0 ? (
+            users.map(({ id, firstName, lastName, activeStudent, profile }) => (
+              <Col xs={12} md={4}>
+                <UserCard
+                  key={id}
+                  id={id}
+                  name={`${firstName} ${lastName}`}
+                  activeStudent={activeStudent}
+                  archetypeId={profile?.archetypeId}
+                />
+              </Col>
+            ))
+          ) : (
+            <p>No Users</p>
+          )}
+        </Row>
+      </Container>
     </ClientOnly>
   );
 };
