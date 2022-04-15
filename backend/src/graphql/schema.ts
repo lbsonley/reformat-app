@@ -4,11 +4,13 @@ import ArchetypeResolver from './resolvers/archetype-resolver';
 import LifeJourneyResolver from './resolvers/life-journey-resolver';
 import TalentEnergyResolver from './resolvers/talent-energy-resolver';
 import TalentLevelResolver from './resolvers/talent-level-resolver';
+import ProfileResolver from './resolvers/profile-resolver';
 
 const createSchema = async () =>
   buildSchema({
     resolvers: [
       UserResolver,
+      ProfileResolver,
       ArchetypeResolver,
       LifeJourneyResolver,
       TalentEnergyResolver,

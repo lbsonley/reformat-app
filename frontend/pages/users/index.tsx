@@ -1,16 +1,9 @@
 /* eslint-disable import/no-relative-packages */
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { gql } from '@apollo/client';
-import client from '../../apollo-client';
-import { User } from '../../types/schema';
-import UserCard from '../../components/user-card/user-card';
+import UserList from '../../components/user-list/user-list';
 
-interface UserListProperties {
-  users: User[];
-}
-
-const UserList: NextPage<UserListProperties> = ({ users }) => {
+const UsersPage: NextPage = () => {
   return (
     <div>
       <Head>
@@ -19,44 +12,9 @@ const UserList: NextPage<UserListProperties> = ({ users }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Users</h1>
-      {users.length > 0 ? (
-        users.map(({ id, firstName, lastName, email, animal }) => (
-          <UserCard
-            key={email}
-            id={id}
-            name={`${firstName} ${lastName}`}
-            email={email}
-            animal={animal}
-          />
-        ))
-      ) : (
-        <p>No Users</p>
-      )}
+      <UserList />
     </div>
   );
 };
 
-export async function getServerSideProps() {
-  const { data } = await client.query({
-    query: gql`
-      query {
-        allUsers {
-          id
-          email
-          firstName
-          lastName
-          language
-          animal
-        }
-      }
-    `,
-  });
-
-  return {
-    props: {
-      users: data.allUsers,
-    },
-  };
-}
-
-export default UserList;
+export default UsersPage;

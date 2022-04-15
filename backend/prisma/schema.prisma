@@ -21,7 +21,14 @@ model User {
   firstName String
   lastName String
   language Languages
+  activeStudent Boolean @default(true)
+  profile Profile?
+}
 
+model Profile {
+  id String @id @default(uuid())
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  userId String?
   // landkarte information
   animal String?
   archetypeId Archetypes?
@@ -37,31 +44,37 @@ model User {
   talentEnergy TalentEnergy? @relation(fields: [talentEnergyId], references: [id])
 
   // progress information
-  heroJourneyProgress Archetypes?
+  currentModule Modules?
 }
 
 model Archetype {
   id Archetypes @id
   name String
-  users User[]
+  users Profile[]
 }
 
 model LifeJourney {
   id LifeJourneys @id
   name String
-  users User[]
+  users Profile[]
 }
 
 model TalentLevel {
   id TalentLevels @id
   name String
-  users User[]
+  users Profile[]
 }
 
 model TalentEnergy {
   id TalentEnergies @id
   name String
-  users User[]
+  users Profile[]
+}
+
+enum Modules {
+  first
+  second
+  third
 }
 
 enum Archetypes {

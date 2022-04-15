@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const GET_USER = gql`
   query GetUser($userId: String!) {
@@ -8,7 +9,10 @@ const GET_USER = gql`
       email
       firstName
       lastName
-      animal
+      profile {
+        animal
+        archetypeId
+      }
     }
   }
 `;
@@ -51,8 +55,15 @@ const UserDetail: React.FC<UserDetailProperties> = ({ userId }) => {
     return null;
   }
 
+  const { archetypeId } = data.userById.profile;
+
   return (
     <>
+      <Image
+        src={`/images/${archetypeId}-100x100.png`}
+        width="100px"
+        height="100px"
+      />
       <pre>{JSON.stringify(data, null, 2)}</pre>
       <Link href={`/users/edit/${userId}`}>Edit</Link>
     </>

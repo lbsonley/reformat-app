@@ -4,6 +4,14 @@ export interface User {
   firstName: string;
   lastName: string;
   language: Languages;
+  activeStudent: boolean;
+  profile?: Profile;
+}
+
+export interface Profile {
+  id: string;
+  user?: User;
+  userId?: string;
   animal?: string;
   archetypeId?: Archetypes;
   archetype?: Archetype;
@@ -14,31 +22,37 @@ export interface User {
   talentLevel?: TalentLevel;
   talentEnergyId?: TalentEnergies;
   talentEnergy?: TalentEnergy;
-  heroJourneyProgress?: Archetypes;
+  currentModule?: Modules;
 }
 
 export interface Archetype {
   id: Archetypes;
   name: string;
-  users?: User[];
+  users?: Profile[];
 }
 
 export interface LifeJourney {
   id: LifeJourneys;
   name: string;
-  users?: User[];
+  users?: Profile[];
 }
 
 export interface TalentLevel {
   id: TalentLevels;
   name: string;
-  users?: User[];
+  users?: Profile[];
 }
 
 export interface TalentEnergy {
   id: TalentEnergies;
   name: string;
-  users?: User[];
+  users?: Profile[];
+}
+
+export enum Modules {
+  first = 'first',
+  second = 'second',
+  third = 'third',
 }
 
 export enum Archetypes {

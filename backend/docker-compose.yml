@@ -3,6 +3,7 @@ version: '3.9'
 
 services:
   server:
+    container_name: reformat-server
     build:
       context: .
       dockerfile: Dockerfile
@@ -17,15 +18,17 @@ services:
       - ./:/app
 
   database:
+    container_name: reformat-dataase
     image: postgres:14.2
     environment:
       POSTGRES_USER: prisma
       POSTGRES_PASSWORD: prisma
       DATABASE_URL: postgresql://prisma:prisma@database:5432/reformat
     volumes:
-      - app-pg-database:/var/lib/postgresql/data/
+      - reformat-pg-database:/var/lib/postgresql/data/
   
   shadow:
+    container_name: reformat-shadow-db
     image: postgres:14.2
     environment:
       POSTGRES_USER: prismaShadow
@@ -34,9 +37,9 @@ services:
     ports:
       - 5433:5432
     volumes:
-      - app-pg-shadow:/var/lib/postgresql/data/
+      - reformat-pg-shadow:/var/lib/postgresql/data/
 
 
 volumes:
-  app-pg-database:
-  app-pg-shadow:
+  reformat-pg-database:
+  reformat-pg-shadow:

@@ -1,11 +1,7 @@
-import {
-  Archetypes,
-  Languages,
-  LifeJourneys,
-  TalentEnergies,
-  TalentLevels,
-} from '@prisma/client';
+import { Languages } from '@prisma/client';
 import { Field, ID, ObjectType } from 'type-graphql';
+/* eslint-disable-next-line import/no-cycle */
+import Profile from './profile';
 
 @ObjectType({ description: 'the user' })
 class User {
@@ -25,25 +21,10 @@ class User {
   language: Languages;
 
   @Field({ nullable: true })
-  animal?: string;
+  activeStudent?: boolean;
 
-  @Field({ nullable: true })
-  archetypeId?: Archetypes;
-
-  @Field({ nullable: true })
-  lifeJourneyId?: LifeJourneys;
-
-  @Field({ nullable: true })
-  talent?: string;
-
-  @Field({ nullable: true })
-  talentLevelId?: TalentLevels;
-
-  @Field({ nullable: true })
-  talentEnergyId?: TalentEnergies;
-
-  @Field({ nullable: true })
-  heroJourneyProgress?: Archetypes;
+  @Field(() => Profile, { nullable: true })
+  profile?: Profile;
 }
 
 export default User;

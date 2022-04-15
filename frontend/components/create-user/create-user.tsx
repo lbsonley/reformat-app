@@ -7,6 +7,7 @@ import {
   LifeJourneys,
   TalentEnergies,
   Languages,
+  Modules,
 } from '../../types/schema';
 
 const CREATE_USER = gql`
@@ -17,12 +18,14 @@ const CREATE_USER = gql`
       firstName
       lastName
       language
-      animal
-      archetypeId
-      lifeJourneyId
-      talent
-      talentEnergyId
-      heroJourneyProgress
+      profile {
+        animal
+        archetypeId
+        lifeJourneyId
+        talent
+        talentEnergyId
+        currentModule
+      }
     }
   }
 `;
@@ -36,6 +39,7 @@ const CreateUser = () => {
       lastName,
       email,
       language,
+      currentModule,
       animal,
       talent,
       archetype,
@@ -50,21 +54,26 @@ const CreateUser = () => {
           lastName,
           email,
           language,
-          animal,
-          talent,
-          archetype: {
-            connect: {
-              id: archetype,
-            },
-          },
-          lifeJourney: {
-            connect: {
-              id: lifeJourney,
-            },
-          },
-          talentEnergy: {
-            connect: {
-              id: talentEnergy,
+          profile: {
+            create: {
+              currentModule,
+              animal,
+              talent,
+              archetype: {
+                connect: {
+                  id: archetype,
+                },
+              },
+              lifeJourney: {
+                connect: {
+                  id: lifeJourney,
+                },
+              },
+              talentEnergy: {
+                connect: {
+                  id: talentEnergy,
+                },
+              },
             },
           },
         },
@@ -84,7 +93,7 @@ const CreateUser = () => {
                 <Col xs={12}>
                   <h2>Personal Information</h2>
                 </Col>
-                <Col xs={6}>
+                <Col xs={12} md={4}>
                   <Field name="firstName">
                     {({ input }) => (
                       <>
@@ -94,7 +103,7 @@ const CreateUser = () => {
                     )}
                   </Field>
                 </Col>
-                <Col xs={6}>
+                <Col xs={12} md={4}>
                   <Field name="lastName">
                     {({ input }) => (
                       <>
@@ -104,7 +113,7 @@ const CreateUser = () => {
                     )}
                   </Field>
                 </Col>
-                <Col xs={6}>
+                <Col xs={12} md={4}>
                   <Field name="email">
                     {({ input }) => (
                       <>
@@ -114,7 +123,7 @@ const CreateUser = () => {
                     )}
                   </Field>
                 </Col>
-                <Col xs={4}>
+                <Col xs={12} md={4}>
                   <Field name="language">
                     {({ input }) => (
                       <>
@@ -136,7 +145,24 @@ const CreateUser = () => {
                 <Col xs={12}>
                   <h2>Basic Information</h2>
                 </Col>
-                <Col xs={6}>
+                <Col xs={12} md={4}>
+                  <Field name="currentModule">
+                    {({ input }) => (
+                      <>
+                        <label htmlFor="currentModule">Current Module</label>
+                        <select id="current-module" {...input}>
+                          <option value=""></option>
+                          {Object.keys(Modules).map((module) => (
+                            <option value={module} key={module}>
+                              {module}
+                            </option>
+                          ))}
+                        </select>
+                      </>
+                    )}
+                  </Field>
+                </Col>
+                <Col xs={12} md={4}>
                   <Field name="animal">
                     {({ input }) => (
                       <>
@@ -146,7 +172,7 @@ const CreateUser = () => {
                     )}
                   </Field>
                 </Col>
-                <Col xs={6}>
+                <Col xs={12} md={4}>
                   <Field name="archetype">
                     {({ input }) => (
                       <>
@@ -163,7 +189,7 @@ const CreateUser = () => {
                     )}
                   </Field>
                 </Col>
-                <Col xs={4}>
+                <Col xs={12} md={4}>
                   <Field name="lifeJourney">
                     {({ input }) => (
                       <>
@@ -195,7 +221,7 @@ const CreateUser = () => {
                     )}
                   </Field>
                 </Col>
-                <Col xs={4}>
+                <Col xs={12} md={4}>
                   <Field name="talentEnergy">
                     {({ input }) => (
                       <>
