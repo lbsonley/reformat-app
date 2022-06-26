@@ -20,15 +20,16 @@ model User {
   email String @unique
   firstName String
   lastName String
-  language Languages
-  activeStudent Boolean @default(true)
   profile Profile?
 }
 
 model Profile {
   id String @id @default(uuid())
-  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String?
+  activeStudent Boolean @default(true)
+  language Languages @default(value: de)
+
   // landkarte information
   animal String?
   archetypeId Archetypes?

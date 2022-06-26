@@ -41,12 +41,7 @@ const ActiveStatus = styled.span<{ activeStudent: boolean }>`
   background-color: ${(props) => (props.activeStudent ? 'green' : 'red')};
 `;
 
-const UserCard: React.FC<UserCardProperties> = ({
-  id,
-  name,
-  activeStudent,
-  archetypeId,
-}) => {
+const UserCard: React.FC<UserCardProperties> = ({ id, name, archetypeId }) => {
   return (
     <Card>
       <Link href={`/users/${id}`} passHref>
@@ -60,8 +55,8 @@ const UserCard: React.FC<UserCardProperties> = ({
             />
           </CardBody>
           <CardFooter>
-            <ActiveStatus activeStudent={activeStudent} />
-            <span>{activeStudent ? 'active' : 'inactive'}</span>
+            {/* <ActiveStatus activeStudent={activeStudent} /> */}
+            {/* <span>{activeStudent ? 'active' : 'inactive'}</span> */}
           </CardFooter>
         </StyledAnchor>
       </Link>
@@ -72,7 +67,6 @@ const UserCard: React.FC<UserCardProperties> = ({
 export interface UserCardProperties {
   id: string;
   name: string;
-  activeStudent: boolean;
   archetypeId?: string;
 }
 

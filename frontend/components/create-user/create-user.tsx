@@ -17,9 +17,9 @@ const CREATE_USER = gql`
       email
       firstName
       lastName
-      language
-      activeStudent
       profile {
+        activeStudent
+        language
         animal
         archetypeId
         lifeJourneyId
@@ -32,7 +32,9 @@ const CREATE_USER = gql`
 `;
 
 const CreateUser = () => {
-  const [createUser, { data, loading, error }] = useMutation(CREATE_USER);
+  const [createUser, { data, loading, error }] = useMutation(CREATE_USER, {
+    refetchQueries: ['AllUsers'],
+  });
 
   const onSubmit = async (values: any) => {
     const {
@@ -55,10 +57,10 @@ const CreateUser = () => {
           firstName,
           lastName,
           email,
-          language,
-          activeStudent,
           profile: {
             create: {
+              language,
+              activeStudent,
               currentModule,
               animal,
               talent,

@@ -1,7 +1,8 @@
 import React from 'react';
-import { useQuery, gql } from '@apollo/client';
+import { useMutation, useQuery, gql } from '@apollo/client';
 import Link from 'next/link';
 import Image from 'next/image';
+import StyledButton from '../primitives/button/button';
 
 const GET_USER = gql`
   query GetUser($where: UserWhereUniqueInput!) {
@@ -21,10 +22,32 @@ const GET_USER = gql`
   }
 `;
 
+const DELETE_USER = gql`
+  mutation DeleteUser($where: UserWhereUniqueInput!) {
+    deleteUser(where: $where) {
+      email
+    }
+  }
+`;
+
 const UserDetail: React.FC<UserDetailProperties> = ({ userId }) => {
   const { data, loading, error } = useQuery(GET_USER, {
     variables: { where: { id: userId } },
   });
+
+  const [deleteUser, deleteResponse] = useMutation(DELETE_USER, {
+    refetchQueries: ['AllUsers'],
+  });
+
+  const handleDeleteUser = () => {
+    deleteUser({
+      variables: {
+        where: {
+          id: userId,
+        },
+      },
+    });
+  };
 
   if (loading) {
     return (
@@ -70,6 +93,7 @@ const UserDetail: React.FC<UserDetailProperties> = ({ userId }) => {
       />
       <pre>{JSON.stringify(data, null, 2)}</pre>
       <Link href={`/users/edit/${userId}`}>Edit</Link>
+      <StyledButton onClick={handleDeleteUser}>Delete</StyledButton>
     </>
   );
 };

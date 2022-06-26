@@ -3,8 +3,6 @@ export interface User {
   email: string;
   firstName: string;
   lastName: string;
-  language: Languages;
-  activeStudent: boolean;
   profile?: Profile;
 }
 
@@ -12,6 +10,8 @@ export interface Profile {
   id: string;
   user?: User;
   userId?: string;
+  activeStudent: boolean;
+  language: Languages;
   animal?: string;
   archetypeId?: Archetypes;
   archetype?: Archetype;

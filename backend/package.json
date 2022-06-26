@@ -10,7 +10,8 @@
     "build": "prisma generate",
     "generate:models": "pal schema typescript -o ../frontend/types",
     "prisma:deploy": "prisma migrate deploy",
-    "start": "ts-node src/index.ts"
+    "start": "ts-node src/index.ts",
+    "start:studio": "prisma studio"
   },
   "keywords": [],
   "author": "",

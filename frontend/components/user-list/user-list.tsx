@@ -11,7 +11,6 @@ const GET_USERS = gql`
       id
       firstName
       lastName
-      activeStudent
       profile {
         archetypeId
       }
@@ -36,13 +35,12 @@ const UserList = () => {
       <Container>
         <Row>
           {users.length > 0 ? (
-            users.map(({ id, firstName, lastName, activeStudent, profile }) => (
+            users.map(({ id, firstName, lastName, profile }) => (
               <Col xs={12} md={4}>
                 <UserCard
                   key={id}
                   id={id}
                   name={`${firstName} ${lastName}`}
-                  activeStudent={activeStudent}
                   archetypeId={profile?.archetypeId}
                 />
               </Col>

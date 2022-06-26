@@ -17,6 +17,20 @@ services:
     volumes:
       - ./:/app
 
+  studio:
+    container_name: reformat-studio
+    build:
+      context: .
+    depends_on:
+      - database
+    env_file:
+      - .env
+    ports:
+      - 5555:5555
+    volumes:
+      - ./:/app
+    command: yarn start:studio
+
   database:
     container_name: reformat-dataase
     image: postgres:14.2

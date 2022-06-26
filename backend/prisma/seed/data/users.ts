@@ -12,9 +12,10 @@ const userData: Prisma.UserCreateInput[] = [
     firstName: 'Ben',
     lastName: 'Sonley',
     email: 'lbsonley@gmail.com',
-    language: 'en',
     profile: {
       create: {
+        language: 'en',
+        activeStudent: false,
         animal: 'sea otter',
         talent: 'removing barriers',
         currentModule: 'first',
@@ -46,10 +47,10 @@ const userData: Prisma.UserCreateInput[] = [
     firstName: 'Patrizia',
     lastName: 'Sonley',
     email: 'patrizia.sonley@gmail.com',
-    language: 'de',
-    activeStudent: true,
     profile: {
       create: {
+        language: 'de',
+        activeStudent: true,
         animal: 'black panther',
         archetype: {
           connect: {
