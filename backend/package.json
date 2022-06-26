@@ -9,6 +9,7 @@
   "scripts": {
     "build": "prisma generate",
     "generate:models": "pal schema typescript -o ../frontend/types",
+    "heroku-prebuild": "yarn prisma generate",
     "prisma:deploy": "prisma migrate deploy",
     "start": "ts-node src/index.ts",
     "start:studio": "prisma studio"
